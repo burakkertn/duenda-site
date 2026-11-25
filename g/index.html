@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oyun daveti · Duenda</title>
+<meta name="description" content="Duenda'da seni bir oyuna çağırıyorlar.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="../tr/"><svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Duenda">
+  <defs><clipPath id="t"><rect width="100" height="100" rx="23"/></clipPath></defs>
+  <rect width="100" height="100" rx="23" style="fill:var(--primary)"/>
+  <polygon clip-path="url(#t)" points="67.5,0 79,0 79,36 73.25,30 67.5,36" style="fill:var(--accent)"/>
+  <text x="42.5" y="55" text-anchor="middle" dominant-baseline="middle" font-family="Source Serif, Georgia, serif" font-weight="600" font-size="66" style="fill:var(--on-primary)">D</text>
+</svg><span class="name">Duenda</span></a>
+</header>
+<main>
+<p class="eyebrow">Oyun daveti · Game invite</p>
+<h1>Duenda açılıyor…</h1>
+<p class="lede">Uygulama açılmadıysa aşağıdaki düğmeye dokun. Duenda yüklü değilse önce TestFlight'tan yükle.</p>
+<p><a id="open" class="mail" href="#">Duenda'da aç · Open in Duenda</a></p>
+</main>
+</div>
+<script>
+  // Davet linki: https://duenda.app/g/?id=<oyun> → uygulama "duenda://open/g?id=<oyun>" ile oyunda açılır.
+  (function () {
+    var id = new URLSearchParams(location.search).get('id') || '';
+    if (!/^[0-9a-fA-F-]{36}$/.test(id)) { document.getElementById('open').removeAttribute('href'); return; }
+    var url = 'duenda://open/g?id=' + id;
+    document.getElementById('open').href = url;
+    location.href = url;
+  })();
+</script>
+</body>
+</html>
