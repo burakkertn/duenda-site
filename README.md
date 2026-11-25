@@ -1,6 +1,6 @@
 # Duenda — gizlilik, kullanım şartları ve destek
 
-Duenda: Yaşam Ajandası uygulamasının App Store için gereken herkese açık sayfaları. GitHub Pages ile yayınlanır.
+Duenda: Çift Ajandası uygulamasının App Store için gereken herkese açık sayfaları. GitHub Pages ile yayınlanır.
 
 | Sayfa | Türkçe | English |
 |---|---|---|
