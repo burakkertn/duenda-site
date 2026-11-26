@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arkadaş daveti · Duenda</title>
+<meta name="description" content="Bir arkadaşın seni Duenda'da oyuna çağırıyor.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .code { font-size: 2.4rem; font-weight: 800; letter-spacing: .18em; margin: .4rem 0 .2rem; font-variant-numeric: tabular-nums; }
+  .row { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
+  .btn { display: inline-block; padding: .75rem 1.1rem; border-radius: 12px; border: 1px solid var(--line, #ddd); text-decoration: none; cursor: pointer; font: inherit; background: transparent; color: inherit; }
+  .btn.primary { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+  .note { font-size: .9rem; opacity: .75; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="../tr/"><svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Duenda">
+  <defs><clipPath id="t"><rect width="100" height="100" rx="23"/></clipPath></defs>
+  <rect width="100" height="100" rx="23" style="fill:var(--primary)"/>
+  <polygon clip-path="url(#t)" points="67.5,0 79,0 79,36 73.25,30 67.5,36" style="fill:var(--accent)"/>
+  <text x="42.5" y="55" text-anchor="middle" dominant-baseline="middle" font-family="Source Serif, Georgia, serif" font-weight="600" font-size="66" style="fill:var(--on-primary)">D</text>
+</svg><span class="name">Duenda</span></a>
+</header>
+<main>
+<p class="eyebrow">Arkadaş daveti · Friend invite</p>
+<h1 id="title">Bir arkadaşın seni Duenda'da oyuna çağırıyor!</h1>
+<p class="lede" id="lede">Duenda yüklüyse aşağıdan aç, davet hemen gelsin. Yüklü değilse indir, kurulumun sonunda bu kodu yaz.</p>
+<p class="eyebrow">Davet kodun · Your invite code</p>
+<p class="code" id="code">———</p>
+<div class="row">
+  <a id="open" class="btn primary" href="#">Duenda'da aç · Open in Duenda</a>
+  <button id="copy" class="btn" type="button">Kodu kopyala · Copy code</button>
+</div>
+<p class="note" id="copied" hidden>Kopyalandı! Duenda kurulumda kodu kendisi bulur. · Copied! Duenda will find it during setup.</p>
+<p class="note">Yakında App Store'da. Şimdilik Duenda TestFlight'ta: TestFlight daveti için seni çağıran arkadaşına yaz.<br>
+Coming soon to the App Store. For now Duenda is on TestFlight: ask the friend who invited you for a TestFlight invite.</p>
+<p class="note">Arkadaş olunca sadece adınızı, avatarınızı, çevrim içi durumunuzu ve aranızdaki oyunları görürsünüz. Notların ve listelerin sende kalır.<br>
+As friends you only see each other's name, avatar, online status and the games between you. Your notes and lists stay private.</p>
+</main>
+</div>
+<script>
+  // Davet linki: https://duenda.app/f/<KOD> (404.html buraya yönlendirir) ya da /f/?code=<KOD>.
+  // Uygulama "duenda://open/f?code=<KOD>" ile açılır; yüklü değilse kod kurulumda yazılır ya da panodan bulunur.
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var raw = (params.get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    var codeEl = document.getElementById('code');
+    var open = document.getElementById('open');
+    if (!/^[A-Z0-9]{6}$/.test(raw)) {
+      codeEl.textContent = '—';
+      open.removeAttribute('href');
+      document.getElementById('copy').disabled = true;
+      return;
+    }
+    var pretty = raw.slice(0, 3) + '-' + raw.slice(3);
+    var shareText = 'Duenda davet kodu: ' + pretty + ' https://duenda.app/f/' + raw;
+    codeEl.textContent = pretty;
+    var url = 'duenda://open/f?code=' + raw;
+    open.href = url;
+
+    function copy() {
+      var done = function () { document.getElementById('copied').hidden = false; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareText).then(done, function () {});
+      }
+    }
+    document.getElementById('copy').addEventListener('click', copy);
+    open.addEventListener('click', copy);
+    // Sayfa açılınca kodu panoya kopyalamayı dene (tarayıcı izin verirse), sonra uygulamayı aç.
+    try { copy(); } catch (e) {}
+    setTimeout(function () { location.href = url; }, 400);
+  })();
+</script>
+</body>
+</html>
