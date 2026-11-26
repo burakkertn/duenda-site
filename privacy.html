@@ -47,7 +47,10 @@
     <tr><td><strong>Email verification and password reset codes</strong></td><td>Confirming your email is yours and resetting your password. Codes are valid for 15 minutes and only their hashes are stored.</td></tr>
     <tr><td><strong>Password</strong></td><td>Signing in. We never store it in plain text, only a one-way hash.</td></tr>
     <tr><td><strong>Sign in with Apple</strong> (if used): the user ID and email Apple provides (which may be a private relay address)</td><td>Signing in with your Apple account</td></tr>
-    <tr><td><strong>Content you create:</strong> notes, to-dos and daily progress, reminders, bills and cards (bank or bill name, amount, due date; we never ask for card or account numbers), movie list and ratings, places, game moves and scores</td><td>The app itself; syncing across your devices and with your partner</td></tr>
+    <tr><td><strong>Sign in with Google</strong> (if used): the user ID and email Google provides, and whether the email is verified</td><td>Signing in with your Google account; linking it to an existing account with the same email</td></tr>
+    <tr><td><strong>Date of birth and gender</strong> (optional; you can choose "Prefer not to say" or leave them empty)</td><td>Applying the minimum age and suggesting features that fit you (e.g. suggesting period tracking to women aged 16+). Never shown to your partner or friends, never used for advertising or profiling. You can change them in Settings.</td></tr>
+    <tr><td><strong>Period tracking</strong> (only if you turn it on): cycle start and end dates</td><td>Showing your cycle and predicting the next one. This is <strong>health data</strong>; see section 4.</td></tr>
+    <tr><td><strong>Content you create:</strong> notes, to-dos and daily progress, reminders (including the weight you enter for water reminders), bills and cards (bank or bill name, amount, due date; we never ask for card or account numbers), movie list and ratings, places, game moves and scores</td><td>The app itself; syncing across your devices and with your partner</td></tr>
     <tr><td><strong>Places and map:</strong> the name, type, city, country, map link and map position (latitude/longitude) of places you add</td><td>Showing your places in a list and on a map. The map is shown with Apple Maps. To find where a place is when its position is unknown, the place name and city are sent to Apple from your phone (Apple place search). When you search for a place while adding it, what you type is sent to Apple from your phone to show suggestions; the same applies when you press and hold on the map (the point's address is looked up with Apple). When you paste a short map link, our server connects only to Google or Apple Maps to open it. Your own location is never used and no location permission is requested.</td></tr>
     <tr><td><strong>Games with friends:</strong> the friendship link, invite codes (valid 7 days, single use), the games and score between you</td><td>Playing games with friends. A friend only sees your name, avatar, online status (you can turn this off in Settings) and the games between you; they never see your notes, lists, email, username or anything about your partner. Your partner doesn't see your games with friends either. Removing a friend or deleting your account deletes the games and score between you.</td></tr>
     <tr><td><strong>Wishlist and clippings:</strong> product links, names, prices and images you add; text and links you send with Share → Duenda from other apps or paste from the clipboard, and short notes you write on notebook pages</td><td>Keeping your lists. When you add a link, the product page is opened once by your phone or our server to read its title, image and price. Prices are not checked again automatically; you update them yourself and we keep the price history. No account or identity details are sent to that page.</td></tr>
@@ -65,12 +68,14 @@
 <h2>3. Sharing with your partner</h2>
 <p>Personal notes under "Mine" are visible to your partner but they can't change them. If you mark a personal note <strong>"hide from my partner"</strong>, only you can see it. The same applies to your clippings notebook: your partner can see it, except items you mark "hide from my partner", and only you can change or delete them. Your partner also sees your profile icon, online status, last-seen time and the names of your devices with notifications turned on. If you both agree, you can make <strong>personal notes fully private</strong>: you each see only your own "Mine" notes (the server never sends you your partner's personal notes). Turning this on or off needs both of you to agree.</p>
 <p><strong>Income &amp; expenses and weight tracking:</strong> you decide in Settings → Sharing with my partner whether your partner sees the income/expense entries you add and your weight entries (including goal and height). When it's off, the server never sends these to your partner and no notifications about them go to your partner.</p>
+<p><strong>Period tracking:</strong> by default only you can see your entries. You decide whether your partner sees them in Settings → Period tracking → "Let my partner see it"; when it's off, the server never sends these entries to your partner. Friends can never see them.</p>
 <p>In couple mode, notes, to-dos, movies and places live in a shared space that both of you can see and edit. Each entry shows who added it. When pairing, you decide whether to move your personal data into the shared space.</p>
 
 <h2>4. How we use your data</h2>
 <ul>
   <li>To provide the service and keep your data in sync (GDPR Art. 6(1)(b): performance of a contract).</li>
   <li>For security and fixing bugs (GDPR Art. 6(1)(f): legitimate interest).</li>
+  <li>Period tracking entries are health data (GDPR Art. 9). We process them only with your <strong>explicit consent</strong> (GDPR Art. 9(2)(a)), which you give by turning period tracking on. You can withdraw it at any time by turning it off in Settings → Period tracking, and delete entries one by one or all of them by deleting your account. This data is used for nothing else and shared with no one (not even your partner unless you turn that on).</li>
 </ul>
 <p>We don't use your data for advertising or profiling, and we don't sell it.</p>
 
@@ -82,6 +87,7 @@
     <tr><td>Hetzner Online GmbH</td><td>Servers and database</td><td>Helsinki, Finland (EU)</td></tr>
     <tr><td>Cloudflare</td><td>Network security, encrypted connections, backup storage</td><td>Global / EU</td></tr>
     <tr><td>Sentry</td><td>Crash reports</td><td>EU</td></tr>
+    <tr><td>Google</td><td>Sign in with Google (only if you choose it; verifying your sign-in)</td><td>USA</td></tr>
     <tr><td>Apple</td><td>Sign in with Apple and phone notifications (Apple Push Notification service). A notification only contains a title, a short text and where to open in the app.</td><td>USA</td></tr>
     <tr><td>Resend</td><td>Email verification and password reset emails (only your email address and the code); delivering the feedback you send to our support address.</td><td>Ireland (EU)</td></tr>
     <tr><td>TMDB</td><td>Movie search and suggestions. Your search text is sent from our server; your name, email or account details are never sent to TMDB.</td><td>USA</td></tr>
@@ -114,7 +120,7 @@
 <p>All connections are encrypted (HTTPS). Passwords are hashed one-way. Each user and couple can only access their own space. Session tokens are stored in your device's secure storage (iOS Keychain).</p>
 
 <h2>10. Children</h2>
-<p>Duenda is not intended for children under 13 (16 in the EU). If we learn that someone under that age has an account, we will delete it.</p>
+<p>Duenda is not intended for children under 13 (16 in the EU). If a date of birth is entered at sign-up, people under 13 can't create an account. If we learn that someone under that age has an account, we will delete it.</p>
 
 <h2>11. Changes</h2>
 <p>If we update this policy, we'll change the date on this page and announce significant changes in the app.</p>
